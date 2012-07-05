@@ -26,9 +26,6 @@ switch ($metodo) {
     case "get_lineas":
         get_lineas();
         break;
-    case "get_posiciones":
-        get_posiciones();
-        break;
 }
 
 
