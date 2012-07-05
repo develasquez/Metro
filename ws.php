@@ -7,7 +7,7 @@ function Conectarse()
       echo '{"success":true, "data":[], "errors":"Error al conectar con la Base de Datos" }'; 
       exit(); 
    } 
-   if (!mysql_select_db("metro",$link)) 
+   if (!mysql_select_db("d",$link)) 
    { 
       echo '{"success":true, "data":[], "errors":"Error seleccionando la base de datos" }'; 
       exit(); 
