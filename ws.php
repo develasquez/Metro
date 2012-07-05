@@ -7,7 +7,7 @@ function Conectarse()
       echo '{"success":true, "data":[], "errors":"Error al conectar con la Base de Datos" }'; 
       exit(); 
    } 
-   if (!mysql_select_db("d",$link)) 
+   if (!mysql_select_db("metro",$link)) 
    { 
       echo '{"success":true, "data":[], "errors":"Error seleccionando la base de datos" }'; 
       exit(); 
@@ -40,7 +40,7 @@ $idLinea = $_GET["idLinea"];
 echo $idLinea;
 	if(evalParam($idLinea)){
 		$link = Conectarse();
-		$query = "Select * from lineas ";//where id=".$idLinea ;
+		$query = "SELECT * FROM  `lineas` WHERE id =1 ";//where id=".$idLinea ;
 		$result=mysql_query($query,$link); 
 		echo json_encode($result);
 	}
