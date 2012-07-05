@@ -17,14 +17,11 @@ function Conectarse()
 
 
 $metodo = $_GET["metodo"];
-
-echo $metodo;
 //seleccionamos la accion por metodo.
 
 switch ($metodo) {
     case "get_linea":
-		echo "entro";
-        get_linea();
+		get_linea();
         break;
     case "get_estaciones":
         get_estaciones();
@@ -37,30 +34,16 @@ switch ($metodo) {
 
 function get_linea(){
 $idLinea = $_GET["idLinea"];
-echo $idLinea;
 	if(evalParam($idLinea)){
-		$link = Conectarse();
-		$query = "SELECT * FROM  `lineas` WHERE id =1 ";//where id=".$idLinea ;
-		$result=mysql_query($query,$link); 
-		$rows = array();
-		while($r = mysql_fetch_assoc($result)) {
-			$rows[] = $r;
-		}
-		echo json_encode($rows);
+		$query = "SELECT * FROM  `lineas` where id=".$idLinea ;
+		echo getSqlToJson($query);
 	}
     }
 function get_lineas(){
-	
-    $idLinea = $_GET["idLinea"];
-	if(evalParam($idLinea)){
-		$link = Conectarse();
-		$query = "Select * from Lineas where id=".$idLinea ;
-		$result=mysql_query($query,$link); 
-		$rows = array();
-		echo json_encode($result);
+		
+		$query = "Select * from lineas";
+		echo getSqlToJson($query);
 	}
-	
-    }
 
 function evalParam($param){
  if(strrpos(strtoupper($param), "SELECT") === false && strrpos(strtoupper($param), "INSERT") === false && strrpos(strtoupper($param), "UPDATE") === false && strrpos(strtoupper($param), "DELETE") === false && strrpos(strtoupper($param), "DROP") === false  )
@@ -72,6 +55,14 @@ function evalParam($param){
  }
 
 }	
-	
+function getSqlToJson($query){
+		$link = Conectarse();
+		$result=mysql_query($query,$link); 
+		$rows = array();
+		while($r = mysql_fetch_assoc($result)) {
+			$rows[] = $r;
+		}
+		return json_encode($rows);
+}
 	
 ?>
