@@ -42,7 +42,11 @@ echo $idLinea;
 		$link = Conectarse();
 		$query = "SELECT * FROM  `lineas` WHERE id =1 ";//where id=".$idLinea ;
 		$result=mysql_query($query,$link); 
-		echo json_encode($result);
+		$rows = array();
+		while($r = mysql_fetch_assoc($result)) {
+			$rows[] = $r;
+		}
+		echo json_encode($rows);
 	}
     }
 function get_lineas(){
