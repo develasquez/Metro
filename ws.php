@@ -23,8 +23,8 @@ switch ($metodo) {
     case "get_linea":
 		get_linea();
         break;
-    case "get_estaciones":
-        get_estaciones();
+    case "get_lineas":
+        get_lineas();
         break;
     case "get_posiciones":
         get_posiciones();
