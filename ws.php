@@ -37,9 +37,10 @@ switch ($metodo) {
 
 function get_linea(){
 $idLinea = $_GET["idLinea"];
+echo $idLinea;
 	if(evalParam($idLinea)){
 		$link = Conectarse();
-		$query = "Select * from Lineas where id=".$idLinea ;
+		$query = "Select * from lineas where id=".$idLinea ;
 		$result=mysql_query($query,$link); 
 		$rows = array();
 		echo json_encode($result);
