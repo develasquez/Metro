@@ -36,11 +36,14 @@ switch ($metodo) {
 
 
 function get_linea(){
-    $idLinea = $_GET["idLinea"];
-	
-    $result=mysql_query($query,$link); 
-    $rows = array();
-echo json_encode($result);
+$idLinea = $_GET["idLinea"];
+	if(evalParam($idLinea)){
+		$link = Conectarse();
+		$query = "Select * from Lineas where id=".$idLinea ;
+		$result=mysql_query($query,$link); 
+		$rows = array();
+		echo json_encode($result);
+	}
     }
 function get_lineas(){
 	
