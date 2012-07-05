@@ -18,11 +18,12 @@ function Conectarse()
 
 $metodo = $_GET["metodo"];
 
-
+echo $metodo;
 //seleccionamos la accion por metodo.
 
 switch ($metodo) {
     case "get_linea":
+		echo "entro";
         get_linea();
         break;
     case "get_estaciones":
